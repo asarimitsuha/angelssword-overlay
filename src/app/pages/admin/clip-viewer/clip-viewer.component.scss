@@ -1,0 +1,35 @@
+h5 {
+    font-size: 17px;
+    margin-top: 5px;
+}
+
+.title-area {
+    width: 220px;
+
+    h5 {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        height: 20px;
+    }
+
+    small {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        height: 22px;
+    }
+}
+
+.fa-circle-xmark {
+    z-index: 2;
+}
+
+.added {
+    position: fixed;
+    padding: 15px;
+    margin-left: -16px;
+    bottom: 75px;
+    width: 100%;
+    background: #c0c0c0;
+}

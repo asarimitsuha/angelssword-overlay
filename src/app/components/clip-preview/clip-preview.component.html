@@ -1,0 +1,11 @@
+<div (mouseover)="showClip=true" (mouseout)="showClip=false">
+    <img [src]="thumbnail" *ngIf="!showClip">
+    <iframe
+        [src]="clipUrl"
+        width="300"
+        height="167"
+        *ngIf="showClip"
+        autoplay
+    >
+    </iframe>
+</div>

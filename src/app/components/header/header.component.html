@@ -1,0 +1,20 @@
+<header *ngIf="isNotWebsource">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white d-flex justify-content-between">
+    <div class="">
+      <img src="assets/images/Logo-BlackForWeb.png" width="100" alt="Leaflit" class="d-block mx-auto ms-3">
+    </div>
+    <div class="d-inline-block me-3">
+      <button class="navbar-toggler" type="button" (click)="jumbotronExample.toggle()" aria-controls="jumbotronExample"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div mdbCollapse #jumbotronExample="mdbCollapse" class="collapse navbar-collapse" id="jumbotronExample">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="showNav">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" [routerLink]="['/admin/clip-viewer']">Clips Viewer</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

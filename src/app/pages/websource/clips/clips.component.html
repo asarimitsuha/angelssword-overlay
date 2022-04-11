@@ -1,0 +1,16 @@
+
+<div id="content" *ngIf="clip">
+    <div class="overlay">
+        <app-twitch [thumbUrl]="clip?.thumbnailUrl" (done)="playClips()"></app-twitch>
+        <div class="previously">
+            <h1>Previously on&nbsp; <img src="assets/images/leaflit-logo.png" width="200"></h1>
+        </div>
+        <div class="wrapper"></div>
+        <div class="clip-info">
+            <h1 [innerHtml]="clip.title"></h1>
+            <h2>Clipped by {{ clip.creatorName }}</h2>
+        </div>
+    </div>
+</div>
+
+

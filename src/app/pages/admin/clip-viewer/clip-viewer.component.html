@@ -1,0 +1,25 @@
+<section class="d-flex flex-wrap">
+    <div *ngFor="let clip of clips?.data" class="d-flex flex-column m-2">
+        <app-clip-preview [thumbnail]="clip.thumbnail_url" [clip]="clip.embed_url"></app-clip-preview>
+        <div class="d-flex flex-row mt-2  mb-3">
+            <button class="btn btn-primary me-2" (click)="add(clip)">Add</button>
+            <div class="title-area">
+                <h5 class="m-0">{{ clip.title }}</h5>
+                <small class="d-block">Clipped by {{ clip.creator_name }}</small>
+                <small class="d-block">{{ clip.created_at | date:'short' }}</small>
+            </div>
+        </div>
+    </div>
+</section>
+<div *ngIf="added.length > 0" class="added">
+    <h3>Added</h3>
+    <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row">
+            <div *ngFor="let clip of added" class="m-2 position-relative">
+                <i class="fa-solid fa-circle-xmark position-absolute"></i>
+                <img [src]="clip.thumbnail_url" width="200">
+            </div>
+        </div>
+        <button class="btn btn-primary" (click)="submit()">Submit</button>
+    </div>
+</div>
