@@ -11,15 +11,23 @@
         </div>
     </div>
 </section>
-<div *ngIf="added.length > 0" class="added">
-    <h3>Added</h3>
-    <div class="d-flex flex-row justify-content-between">
-        <div class="d-flex flex-row">
-            <div *ngFor="let clip of added" class="m-2 position-relative">
-                <i class="fa-solid fa-circle-xmark position-absolute"></i>
-                <img [src]="clip.thumbnail_url" width="200">
+<div *ngIf="added.length > 0 || submitted" class="added">
+    <ng-container *ngIf="added.length > 0">
+        <h3>Added</h3>
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row">
+                <div *ngFor="let clip of added" class="m-2 position-relative">
+                    <i class="fa-solid fa-circle-xmark position-absolute"></i>
+                    <img [src]="clip.thumbnail_url" width="200">
+                </div>
             </div>
+            <button class="btn btn-primary" (click)="submit()">Submit</button>
         </div>
-        <button class="btn btn-primary" (click)="submit()">Submit</button>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="submitted">
+        <div class="d-flex flex-column m-3 align-items-center text-center">
+            <h2>Clips has been updated</h2>
+            <p>Please view your overlay at:  https://overlay.angelssword.com/overlay/{{ streamer }}</p>
+        </div>
+    </ng-container>
 </div>
