@@ -41,7 +41,6 @@ export class ClipViewerComponent implements OnInit {
     this.http.post('/clip-viewer', submitValue).pipe(
       take(1)
     ).subscribe(response => {
-      console.log(response);
       this.added = [];
     });
   }

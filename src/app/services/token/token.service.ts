@@ -31,12 +31,17 @@ export class TokenService {
     }
   }
 
+  getTokenFromSession(): TokenModel {
+    const sessionToken = sessionStorage.getItem('token') || '';
+
+    return JSON.parse(sessionToken) as TokenModel;
+  }
+
   killToken(): void {
     let url = 'https://id.twitch.tv/oauth2/authorize';
     url += `?client_id=${ this.clientId }&redirect_uri=${ environment.tokenReturnUrl }&response_type=code&scope=${ this.scope }`;
     this.store = null;
     sessionStorage.removeItem('token');
-    console.log(url);
     window.location.href = url;
   }
 }
