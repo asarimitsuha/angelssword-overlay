@@ -24,7 +24,6 @@ import { FooterModule } from './components/footer/footer.module';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
-import { EnviromentService } from './services/enviroment/enviroment.service';
 
 
 @NgModule({
@@ -57,7 +56,6 @@ import { EnviromentService } from './services/enviroment/enviroment.service';
   providers: [
     HttpClient,
     AuthGuardService,
-    EnviromentService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
