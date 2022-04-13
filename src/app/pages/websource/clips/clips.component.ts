@@ -14,6 +14,7 @@ export class ClipsComponent implements OnInit {
     title: string;
     thumbnailUrl: string;
   };
+  streamerName?: string;
   private playIndex = 0;
   private clipsData = [];
   
@@ -22,7 +23,8 @@ export class ClipsComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(params => {
-      this.http.get(`/clip-viewer/${ params.streamerName }`).pipe(
+      this.streamerName = params.streamerName;
+      this.http.get(`/clip-viewer/${ this.streamerName }`).pipe(
         take(1)
       ).subscribe(data => {
         this.clipsData = data;
@@ -34,8 +36,6 @@ export class ClipsComponent implements OnInit {
 
   playClips(): void {
     this.clip = this.clipsData[this.playIndex];
-    if ((this.clipsData.length - 1) > this.playIndex) {
-      this.playIndex++;
-    }
+    this.playIndex++;
   }
 }
