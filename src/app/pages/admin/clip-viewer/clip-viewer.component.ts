@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { TwitchGetClipData, TwitchGetClipsResponse } from 'src/app/interfaces/twitch.interface';
+import { ClipQueueService } from 'src/app/services/clip-queue/clip-queue.service';
 import { HttpService } from 'src/app/services/http/http.service';
 import { TokenService } from 'src/app/services/token/token.service';
 
@@ -15,7 +16,7 @@ export class ClipViewerComponent implements OnInit {
   added: TwitchGetClipData[] = [];
   streamer?: string;
 
-  constructor(private http: HttpService, private token: TokenService) { }
+  constructor(private http: HttpService, private token: TokenService, private clipQueue: ClipQueueService) { }
 
   ngOnInit(): void {
     this.streamer = this.token.getTokenFromSession().login;
@@ -24,30 +25,19 @@ export class ClipViewerComponent implements OnInit {
     ).subscribe(clips => {
       this.clips = clips
     });
+
+    this.clipQueue.queue.subscribe(clips => this.added = clips);
   }
 
   add(clip: TwitchGetClipData): void {
-    this.submitted = false;
-    if (!this.added.includes(clip)) {
-      this.added.push(clip);
-    }
+    this.clipQueue.add(clip);
   }
 
   submit(): void {
-    const submitValue = this.added.map(clip => {
-      this.submitted = true;
-      return {
-        streamerName: clip.broadcaster_name,
-        creatorName: clip.creator_name,
-        title: clip.title,
-        thumbnailUrl: clip.thumbnail_url
-      }
-    });
+    this.clipQueue.submit();
+  }
 
-    this.http.post('/clip-viewer', submitValue).pipe(
-      take(1)
-    ).subscribe(response => {
-      this.added = [];
-    });
+  remove(clip: TwitchGetClipData): void {
+    this.clipQueue.remove(clip);
   }
 }

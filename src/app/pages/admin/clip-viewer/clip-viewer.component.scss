@@ -21,8 +21,16 @@ h5 {
     }
 }
 
-.fa-circle-xmark {
-    z-index: 2;
+.remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    i {
+        color: #fff;
+        text-shadow: 1px 1px 1px #000;
+    }
+    
 }
 
 .added {
@@ -32,4 +40,6 @@ h5 {
     bottom: 0;
     width: 100%;
     background: #c0c0c0;
+    font-size: 20px;
+    z-index: 3;
 }

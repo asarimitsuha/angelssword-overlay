@@ -1,11 +1,6 @@
-<div (mouseover)="showClip=true" (mouseout)="showClip=false">
-    <img [src]="thumbnail" *ngIf="!showClip">
-    <iframe
-        [src]="clipUrl"
-        width="300"
-        height="167"
-        *ngIf="showClip"
-        autoplay
-    >
-    </iframe>
+<div class="position-relative">
+    <a (click)="openModal()">
+        <i class="fas fa-play-circle"></i>
+        <img [src]="clip?.thumbnail_url" [title]="clip?.title">
+    </a>
 </div>

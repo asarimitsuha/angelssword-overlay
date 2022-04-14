@@ -1,6 +1,6 @@
 <section class="d-flex flex-wrap">
     <div *ngFor="let clip of clips?.data" class="d-flex flex-column m-2">
-        <app-clip-preview [thumbnail]="clip.thumbnail_url" [clip]="clip.embed_url"></app-clip-preview>
+        <app-clip-preview [clip]="clip"></app-clip-preview>
         <div class="d-flex flex-row mt-2  mb-3">
             <button class="btn btn-primary me-2" (click)="add(clip)">Add</button>
             <div class="title-area">
@@ -17,7 +17,9 @@
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row">
                 <div *ngFor="let clip of added" class="m-2 position-relative">
-                    <i class="fa-solid fa-circle-xmark position-absolute"></i>
+                    <a (click)="remove(clip)" href="javascript:void(0)" class="remove">
+                        <i class="fas fa-times-circle"></i>
+                    </a>
                     <img [src]="clip.thumbnail_url" width="200">
                 </div>
             </div>
