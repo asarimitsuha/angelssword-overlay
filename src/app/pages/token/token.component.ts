@@ -18,7 +18,7 @@ export class TokenComponent implements OnInit {
       filter(params => params.code)
     ).subscribe(params => {
       this.token.getToken(params.code).subscribe((token: TokenModel) => {
-        if (token.type === 'Admin') {
+        if (token.type === 'Admin' || token.token === 'Streamer') {
           this.router.navigateByUrl('/admin');
         } else {
           this.router.navigateByUrl('/login');

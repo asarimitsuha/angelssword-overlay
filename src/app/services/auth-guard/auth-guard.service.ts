@@ -1,3 +1,4 @@
+import { TokenType } from '@angular/compiler';
 import { Injectable, isDevMode} from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { TokenService } from '../token/token.service';
@@ -23,7 +24,7 @@ export class AuthGuardService implements CanActivate {
                 return resolve(false);
             }
             else {
-                if (token.type === 'Admin') {
+                if (token.type === 'Admin' || token.type === 'Streamer') {
                     return resolve(true);
                 }
                 return resolve(false);
