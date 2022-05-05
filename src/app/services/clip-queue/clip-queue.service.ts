@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Observable, ReplaySubject } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
 import { TwitchGetClipData } from 'src/app/interfaces/twitch.interface';
 import { HttpService } from '../http/http.service';
 
@@ -34,7 +34,7 @@ export class ClipQueueService implements OnDestroy {
     }
   }
 
-  submit(): void {
+  submit(): Observable<any> {
     const submitValue = this.clipsQueue.map(clip => {
       return {
         streamerName: clip.broadcaster_name,
@@ -45,12 +45,14 @@ export class ClipQueueService implements OnDestroy {
     });
     this.submitted = true;
 
-    this.http.post('/clip-viewer', submitValue).pipe(
-      take(1)
-    ).subscribe(() => {
-      this.clipsQueue = [];
-      this.updateSubject();
-    });
+    return this.http.post('/clip-viewer', submitValue).pipe(
+      take(1),
+      switchMap(item => {
+        this.clipsQueue = [];
+        this.updateSubject();
+        return item;
+      })
+    );
   }
 
   updateSubject(): void {

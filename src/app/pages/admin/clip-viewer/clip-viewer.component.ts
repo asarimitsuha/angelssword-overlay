@@ -23,18 +23,21 @@ export class ClipViewerComponent implements OnInit {
     this.http.get('/clip-viewer').pipe(
       take(1)
     ).subscribe(clips => {
-      this.clips = clips
+      this.clips = clips;
     });
 
     this.clipQueue.queue.subscribe(clips => this.added = clips);
   }
 
   add(clip: TwitchGetClipData): void {
+    this.submitted = false;
     this.clipQueue.add(clip);
   }
 
   submit(): void {
-    this.clipQueue.submit();
+    this.clipQueue.submit().subscribe(() => {
+      this.submitted = true;
+    });
   }
 
   remove(clip: TwitchGetClipData): void {
