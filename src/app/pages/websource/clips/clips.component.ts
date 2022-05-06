@@ -24,7 +24,7 @@ export class ClipsComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       this.streamerName = params.streamerName;
-      this.http.get(`/clip-viewer/${ this.streamerName }`).pipe(
+      this.http.get(`/clip-viewer/websource/${ this.streamerName }`).pipe(
         take(1)
       ).subscribe(data => {
         this.clipsData = data;
