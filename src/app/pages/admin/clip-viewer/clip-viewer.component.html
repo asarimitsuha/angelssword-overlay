@@ -1,3 +1,6 @@
+<div class="d-flex flex-row mb-5 date p-3 rounded">
+    <div class="me-3">Select date range: </div><ejs-daterangepicker (change)="getClips()" #range [value]="value" [maxDays]="7" strictMode="true"></ejs-daterangepicker>
+</div>
 <section class="d-flex flex-wrap">
     <div *ngFor="let clip of clips?.data" class="d-flex flex-column m-2">
         <app-clip-preview [clip]="clip"></app-clip-preview>
@@ -9,6 +12,9 @@
                 <small class="d-block">{{ clip.created_at | date:'short' }}</small>
             </div>
         </div>
+    </div>
+    <div *ngIf="clips?.data?.length === 0">
+        <p>No clips found.</p>
     </div>
 </section>
 <div *ngIf="added.length > 0 || submitted" class="added">

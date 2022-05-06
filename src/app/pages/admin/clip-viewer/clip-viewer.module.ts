@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClipViewerComponent } from './clip-viewer.component';
 import { ClipPreviewModule } from 'src/app/components/clip-preview/clip-preview.module';
+import { DateRangePickerModule  } from '@syncfusion/ej2-angular-calendars';
 
 
 
@@ -11,7 +12,8 @@ import { ClipPreviewModule } from 'src/app/components/clip-preview/clip-preview.
   ],
   imports: [
     CommonModule,
-    ClipPreviewModule
+    ClipPreviewModule,
+    DateRangePickerModule 
   ]
 })
 export class ClipViewerModule { }
