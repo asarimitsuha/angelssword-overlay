@@ -8,6 +8,7 @@ import { RouteService } from '../../services/route/route.service';
 })
 export class FooterComponent implements OnInit {
   isNotWebsource = true;
+  year = new Date().getFullYear();
   
   constructor(private route: RouteService) { }
 

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   domain: 'localhost',
-  apiUrl: 'http://localhost:4000',
+  apiUrl: 'http://172.16.10.70:4000',
   tokenReturnUrl: 'http://localhost:4200/token'
 };
 
