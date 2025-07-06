@@ -9,6 +9,7 @@ import { RouteService } from './services/route/route.service';
 export class AppComponent implements OnInit {
   title = 'leaflit-overlays';
   noBackground = false;
+  noBackgroundChat = false;
 
   constructor(private route: RouteService) { }
 
@@ -16,7 +17,10 @@ export class AppComponent implements OnInit {
     this.route.current().subscribe(url => {
       if (url.includes('/websource/clips')) {
         this.noBackground = true;
+      } else if (url.includes('/websource/chat')) {
+        this.noBackgroundChat = true;
       }
+
     });
   }
 }

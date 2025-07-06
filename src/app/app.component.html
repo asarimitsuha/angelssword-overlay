@@ -1,6 +1,6 @@
-<div [ngClass]="{ blackBg: noBackground }">
+<div [ngClass]="{ blackBg: noBackground, chatBg: noBackgroundChat }">
   <app-header></app-header>
-  <div class="" [ngClass]="{ content: !noBackground, 'p-3': !noBackground }">
+  <div class="" [ngClass]="{ content: !noBackground && !noBackgroundChat, 'p-3': !noBackground && !noBackgroundChat }">
     <router-outlet></router-outlet>
   </div>
   <app-footer></app-footer>

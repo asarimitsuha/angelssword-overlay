@@ -40,7 +40,8 @@ export class ClipQueueService implements OnDestroy {
         streamerName: clip.broadcaster_name,
         creatorName: clip.creator_name,
         title: clip.title,
-        thumbnailUrl: clip.thumbnail_url
+        thumbnailUrl: clip.thumbnail_url,
+        videoId: clip.video_id
       }
     });
     this.submitted = true;

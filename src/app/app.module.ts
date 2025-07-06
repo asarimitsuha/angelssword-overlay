@@ -24,11 +24,13 @@ import { FooterModule } from './components/footer/footer.module';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

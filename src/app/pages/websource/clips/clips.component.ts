@@ -13,6 +13,7 @@ export class ClipsComponent implements OnInit {
     creatorName: string;
     title: string;
     thumbnailUrl: string;
+    videoId: string;
   };
   streamerName?: string;
   private playIndex = 0;
