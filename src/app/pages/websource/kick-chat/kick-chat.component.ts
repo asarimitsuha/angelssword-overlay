@@ -15,7 +15,7 @@ export class KickChatComponent implements OnInit {
   @ViewChild('container', {read: ViewContainerRef }) container!: ViewContainerRef;
   @ViewChild('chatWrapper', {read: ViewContainerRef }) chatWrapper!: ViewContainerRef;
   @ViewChild('chat', {read: ViewContainerRef }) chat!: ViewContainerRef;
-  containerList: ComponentRef<ChatComponent>[] = [];
+  containerList: { id: string, component: ComponentRef<ChatComponent>}[] = [];
   width = '620';
   height = '835';
   showKickLogo = false;
@@ -36,21 +36,35 @@ export class KickChatComponent implements OnInit {
       const chatWrapper = this.chatWrapper.element.nativeElement;
 
       this.socket.addListener<ChatMessage>(socket, 'KickChat').subscribe(chat => {
-        if (!(this.chatLog.find(log => log.id === chat.id))) {
+        if (!(this.chatLog.find(log => log.id === chat.id)) && chat.type === 'message') {
           this.chatLog.push(chat);
           const chatComponent = this.chat.createComponent(ChatComponent);
           chatComponent.setInput('message', chat);
           chatComponent.setInput('showKickLogo', this.showKickLogo);
-          
-          this.containerList.push(chatComponent);
+          const log = { 
+              id: chat.id,
+              component: chatComponent 
+            }
+          this.containerList.push(log);
           setTimeout(() => {
             container.scrollTop = chatWrapper.scrollHeight;
-          }, 500);
+          }, 100);
           
           if (this.containerList.length > 25) {
-            this.containerList[0].destroy();
+            this.containerList[0].component.destroy();
             this.containerList.shift();
             this.chatLog.shift();
+          }
+        }
+
+        if (chat.type === 'delete') {
+          const id = chat.message?.id || '';
+          const message = this.containerList.find(container => container.id === id);
+          
+          if (message) {
+            message?.component.destroy();
+            const index = this.containerList.indexOf(message);
+            this.containerList.splice(index, 1);
           }
         }
       });

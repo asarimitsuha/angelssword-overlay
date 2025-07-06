@@ -19,4 +19,7 @@ export interface ChatMessage {
         username: string;
     }
     type: string;
+    message?: {
+        id: string;
+    }
 }
