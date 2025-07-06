@@ -102,6 +102,17 @@
   color: var(--customNameColor);
   text-shadow: 0 1px 0 #0004;
 }
+.alignRight {
+  .username-box {
+    align-self: flex-end;
+  }
+
+  .message {
+    align-self: flex-end;
+    margin-left: 0;
+    margin-right: 15px;
+  }
+}
 
 .message {
   top: calc((18px/2) * -1);

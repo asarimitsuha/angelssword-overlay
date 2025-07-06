@@ -19,6 +19,7 @@ export class KickChatComponent implements OnInit {
   width = '620';
   height = '835';
   showKickLogo = false;
+  alignRight = false;
   chatLog: ChatMessage[] = [];
 
   constructor(private socket: SocketService, private route: ActivatedRoute) { }
@@ -29,6 +30,7 @@ export class KickChatComponent implements OnInit {
         this.width = `${ params['width'] || '620' }px`;
         this.height = `${ params['height'] || '835' }px`;
         this.showKickLogo = params['showKickLogo'] === 'true';
+        this.alignRight = params['alignRight'] || false;
       }),
       switchMap(() => this.socket.connect('/socket/kickchat'))
     ).subscribe(socket => {
@@ -41,6 +43,7 @@ export class KickChatComponent implements OnInit {
           const chatComponent = this.chat.createComponent(ChatComponent);
           chatComponent.setInput('message', chat);
           chatComponent.setInput('showKickLogo', this.showKickLogo);
+          chatComponent.setInput('alignRight', this.alignRight);
           const log = { 
               id: chat.id,
               component: chatComponent 

@@ -1,4 +1,4 @@
-<div class="bubble user-color-dark animate none" [attr.data-message-id]="message.id">
+<div class="bubble user-color-dark animate none" [attr.data-message-id]="message.id" [class.alignRight]="alignRight">
     <div class="username-box">
         <p class="username" [ngStyle]="{ 'text-shadow': generateBoxShadow(message.sender.identity.color) }">{{ message.sender.username }}</p>
         <img *ngIf="showKickLogo" src="assets/images/kick.webp" class="kick-logo" alt="Kick">

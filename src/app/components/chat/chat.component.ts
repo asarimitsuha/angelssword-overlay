@@ -9,6 +9,7 @@ import { ChatMessage } from './chat.interface';
 export class ChatComponent {
   @Input() message!: ChatMessage;
   @Input() showKickLogo = false;
+  @Input() alignRight = false;
 
   compileMessage(message: string): string {
     const regex = /\[(?:emote\:)(\d+)(?:\:)(\D+)\]/gm;
