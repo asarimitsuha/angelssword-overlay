@@ -212,6 +212,11 @@
   transform: skew(-5deg);
 }
 
+.emote {
+  margin: 0px 2px 0px 2px;
+  width: 28px;
+}
+
 /* --- [Animations] --- */
 
 @keyframes gradientShift-cornerDiagonal {
