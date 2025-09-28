@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 })
 export class TokenService {
   private clientId = 's9rhtxonvlp2uwi30n4scgof8902hg';
-  private scope = 'user:read:email clips:edit';
+  private scope = 'user:read:email clips:edit channel:read:subscriptions';
   store: TokenModel | null = null;
 
   constructor(private http: HttpClient) {

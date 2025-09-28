@@ -110,13 +110,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angelssword-overlays:build:production"
+              "buildTarget": "angelssword-overlays:build:production"
             },
             "development": {
-              "browserTarget": "angelssword-overlays:build:development"
+              "buildTarget": "angelssword-overlays:build:development"
             },
             "localhost": {
-              "browserTarget": "angelssword-overlays:build:localhost"
+              "buildTarget": "angelssword-overlays:build:localhost"
             }
           },
           "defaultConfiguration": "localhost"
@@ -124,7 +124,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angelssword-overlays:build"
+            "buildTarget": "angelssword-overlays:build"
           }
         },
         "test": {

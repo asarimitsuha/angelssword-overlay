@@ -25,12 +25,14 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { ChatComponent } from './components/chat/chat.component';
+import { OauthComponent } from './pages/oauth/oauth.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    OauthComponent
   ],
   imports: [
     BrowserModule,
