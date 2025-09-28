@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.route.current().subscribe(url => {
-      if (url.includes('/websource/clips') || url.includes('/websource/subathon')) {
+      if (url.includes('/websource/clips')) {
         this.noBackground = true;
-      } else if (url.includes('/websource/chat')) {
+      } else if (url.includes('/websource/chat') || url.includes('/websource/subathon')) {
         this.noBackgroundChat = true;
       }
     });

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SocketService } from 'src/app/services/socket/socket.service';
 import { SubathonData } from './subathon.interface';
 import { switchMap } from 'rxjs/operators';
+import { HttpService } from 'src/app/services/http/http.service';
 
 @Component({
   selector: 'app-subathon',
@@ -14,8 +15,9 @@ export class SubathonComponent implements OnInit {
   kick = 0;
   twitch = 0;
   nextGoal = 'Loading...';
+  loaded = false;
 
-  constructor(private socket: SocketService) { }
+  constructor(private socket: SocketService, private http: HttpService) { }
 
   ngOnInit(): void {
     this.socket.connect('/socket/subathon').pipe(
@@ -26,6 +28,10 @@ export class SubathonComponent implements OnInit {
       this.nextGoal = subathon.nextGoal;
       this.twitch = subathon.twitch;
     });
+    if (!this.loaded) {
+      this.http.get('/subathon/update').subscribe(() => {});
+      this.loaded = true;
+    }
   }
 
   progressWidth(progress: number): string {
