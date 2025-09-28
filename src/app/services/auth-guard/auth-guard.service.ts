@@ -1,12 +1,12 @@
 import { TokenType } from '@angular/compiler';
 import { Injectable, isDevMode} from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService  {
     private routeUrl: string;
 
     constructor(private token: TokenService, private router: Router) {

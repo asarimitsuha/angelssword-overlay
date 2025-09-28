@@ -1,0 +1,84 @@
+.subathon {
+    width: 600px;
+    background: url('/assets/images/ping-bg.png');
+    background-size: cover;
+    border-radius: 10px;
+    padding: 5px 10px 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    align-items: center;
+    font-family: Mako;
+}
+
+.leaflit {
+    width: 100px;
+    height: auto;
+    padding-right: 15px;
+}
+
+.grow {
+    flex-grow: 1;
+}
+.title {
+    font-size: 13px;
+    padding: 0 10px 0 5px;
+    font-weight: bold;
+    -webkit-text-stroke: 5px #fff;
+    paint-order: stroke fill;
+    color: #4988C1;
+}
+
+.value {
+    font-size: 13px;
+    font-weight: bold;
+    -webkit-text-stroke: 5px #fff;
+    paint-order: stroke fill;
+    color: #07366A;
+}
+
+.twitch {
+    background-color: #8956FB;
+}
+
+.kick {
+    background-color: #61CB2B;
+}
+
+.progress-container {
+    background-color: #fff;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.progress {
+    height: 6px;
+    border-radius: 5px;
+}
+
+img {
+    height: 15px;
+    filter: drop-shadow(5px 5px 10px rgba(255, 255, 255, 1));
+    margin-top: -2px;
+}
+
+.network {
+    width: 340px;
+    padding-top: 6px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.pill {
+    background-color: #fff;
+    padding: 3px 10px 5px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    margin-left: 3px;
+
+    &.right {
+        margin-top: -2px;
+        padding: 1px 10px 3px 10px;
+    }
+}

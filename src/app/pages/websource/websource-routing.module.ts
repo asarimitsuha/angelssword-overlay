@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClipsComponent } from '../websource/clips/clips.component';
 import { KickChatComponent } from './kick-chat/kick-chat.component';
+import { SubathonComponent } from './subathon/subathon.component';
 
 const routes: Routes = [
     {
@@ -11,6 +12,10 @@ const routes: Routes = [
     {
         path: 'chat/kick',
         component: KickChatComponent
+    },
+    {
+        path: 'subathon',
+        component: SubathonComponent
     }
 ];
 

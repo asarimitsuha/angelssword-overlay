@@ -1,0 +1,49 @@
+<div class="subathon">
+    <div>
+        <img src="/assets/images/leaflit-logo.png" class="leaflit">
+    </div>
+    <div class="grow">
+        <div class="goal">
+            <span class="title">Next Goal:</span>
+            <span class="value">{{ nextGoal }}</span>
+        </div>
+        <div class="progress-container">
+            <div class="progress">
+                <div
+                    class="progress-bar twitch"
+                    role="progressbar"
+                    [style]="progressWidth(twitch)"
+                    [attr.aria-valuenow]="twitch"
+                    aria-valuemin="0"
+                    [attr.aria-valuemax]="goal"
+                ></div>
+                <div
+                    class="progress-bar kick"
+                    role="progressbar"
+                    [style]="progressWidth(kick)"
+                    [attr.aria-valuenow]="kick"
+                    aria-valuemin="0"
+                    [attr.aria-valuemax]="goal"
+                ></div>
+            </div>
+        </div>
+        
+        <div class="network">
+            <div>
+                <span class="pill">
+                    <img src="/assets/images/twitch.png">
+                    {{ twitch }}
+                </span>
+                <span class="pill">
+                    <img src="/assets/images/kick.webp" class="kick-img">
+                    {{ kick }}
+                </span>
+            </div>
+            
+
+            <span class="right pill">
+                Total: {{ twitch + kick }} / <strong>{{ goal }}</strong>
+            </span>
+        </div>
+    </div>
+</div>
