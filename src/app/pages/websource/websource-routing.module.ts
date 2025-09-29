@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClipsComponent } from '../websource/clips/clips.component';
 import { KickChatComponent } from './kick-chat/kick-chat.component';
 import { SubathonComponent } from './subathon/subathon.component';
+import { ButtonComponent } from './subathon/button/button.component';
 
 const routes: Routes = [
     {
@@ -16,6 +17,10 @@ const routes: Routes = [
     {
         path: 'subathon',
         component: SubathonComponent
+    },
+    {
+        path: 'subathon/add',
+        component: ButtonComponent
     }
 ];
 
