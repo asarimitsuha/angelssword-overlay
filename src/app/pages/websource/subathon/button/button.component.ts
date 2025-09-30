@@ -17,10 +17,19 @@ export class ButtonComponent {
   constructor(private http: HttpService,  private formBuilder: FormBuilder) { }
 
   addKick(): void {
-    this.http.post('/subathon/kick', { count: this.form.controls.kick }).subscribe(() => {});
+    const count = Number(this.form.controls.kick.value) || 1;
+
+    if (typeof count === 'number') {
+      this.http.post('/subathon/kick', { count }).subscribe(() => {});
+    }
   }
 
   addTwitch(): void {
-    this.http.post('/subathon/twitch/add', { count: this.form.controls.twitch }).subscribe(() => {});
+    const count = Number(this.form.controls.twitch.value) || 1;
+
+    if (typeof count === 'number') {
+      this.http.post('/subathon/twitch/add', { count }).subscribe(() => {});
+    }
+    
   }
 }
