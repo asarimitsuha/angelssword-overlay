@@ -1,6 +1,14 @@
-<div class="m-5 p-5 card w-50">
-    <button class="btn btn-primary mb-3" (click)="addKick()">Add to Kick</button>
-
-    <button class="btn btn-secondary" (click)="addTwitch()">Add to Twitch</button>
-</div>
-
+<form [formGroup]="form">
+    <div class="m-5 p-5 card">
+        <div class="d-flex flex-row mb-3">
+            <input class="form-control me-3" id="kick" type="text" formControlName="kick">
+            <button class="btn btn-primary" (click)="addKick()">Add to Kick</button>
+        </div>
+        
+        <div class="d-flex flex-row">
+            <input class="form-control me-3" id="twitch" type="text" formControlName="twitch">
+            <button class="btn btn-secondary" (click)="addTwitch()">Add to Twitch</button>
+        </div>
+        
+    </div>
+</form>
